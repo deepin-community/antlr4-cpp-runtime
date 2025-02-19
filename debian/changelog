@@ -1,5 +1,56 @@
-template-repository (1.0-1) unstable; urgency=medium
+antlr4-cpp-runtime (4.9+dfsg-3) unstable; urgency=medium
 
-  * Initial release
+  * Fix library paths in CMake files. Thanks Peter A. Jonsson.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Andrius Merkys <merkys@debian.org>  Mon, 11 Apr 2022 01:55:52 -0400
+
+antlr4-cpp-runtime (4.9+dfsg-2) unstable; urgency=medium
+
+  * Build and install CMake definitions to libdevel package (Closes: #1007712).
+  * Bump debhelper from old 12 to 13.
+  * Update standards version to 4.6.0, no changes needed.
+  * Bump copyright years.
+
+ -- Andrius Merkys <merkys@debian.org>  Tue, 15 Mar 2022 10:17:37 -0400
+
+antlr4-cpp-runtime (4.9+dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Make ANTLRInputStream.h usable with C++17. (Closes: #991482)
+
+ -- Adrian Bunk <bunk@debian.org>  Sun, 25 Jul 2021 19:02:59 +0300
+
+antlr4-cpp-runtime (4.9+dfsg-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set debhelper-compat version in Build-Depends.
+  * Update standards version to 4.5.0, no changes needed.
+
+  [ Andrius Merkys ]
+  * New upstream version 4.9+dfsg
+  * Accommodating SOVERSION change.
+  * Using system-provided utfcpp.
+
+ -- Andrius Merkys <merkys@debian.org>  Tue, 01 Dec 2020 03:41:23 -0500
+
+antlr4-cpp-runtime (4.8+dfsg-2) unstable; urgency=medium
+
+  * Removing symbols control file as symbol list seems to be arch-dependent.
+  * Bumping Standards-Version (no changes).
+
+ -- Andrius Merkys <merkys@debian.org>  Tue, 21 Jan 2020 02:08:29 -0500
+
+antlr4-cpp-runtime (4.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 4.8+dfsg
+  * Adding symbols files for all libraries to control ABI changes.
+  * Updating my e-mail address.
+  * Updating debian/copyright.
+
+ -- Andrius Merkys <merkys@debian.org>  Mon, 20 Jan 2020 03:35:19 -0500
+
+antlr4-cpp-runtime (4.7.2+dfsg-1) unstable; urgency=medium
+
+  * Initial release (Closes: #918109)
+
+ -- Andrius Merkys <andrius.merkys@gmail.com>  Thu, 03 Jan 2019 03:14:46 -0500

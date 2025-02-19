@@ -1,0 +1,31 @@
+commit 726983d8159cf5e4e7ea4104c66093079a7bce83
+Author: Biswapriyo Nath <nathbappai@gmail.com>
+Date:   Sun Jan 2 23:31:27 2022 +0530
+
+    cpp/cmake: Fix library install directories (#3447)
+    
+    This installs DLLs in bin directory instead of lib.
+
+--- a/runtime/CMakeLists.txt
++++ b/runtime/CMakeLists.txt
+@@ -104,11 +104,16 @@
+                                  COMPILE_FLAGS "${disabled_compile_warnings} ${extra_static_compile_flags}")
+ 
+ install(TARGETS antlr4_shared
+-        DESTINATION lib
+-        EXPORT antlr4-targets)
++        EXPORT antlr4-targets
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
++
+ install(TARGETS antlr4_static
+-        DESTINATION lib
+-        EXPORT antlr4-targets)
++        EXPORT antlr4-targets
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ install(DIRECTORY "${PROJECT_SOURCE_DIR}/runtime/src/"
+         DESTINATION "include/antlr4-runtime"
