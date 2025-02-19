@@ -1,0 +1,34 @@
+Description: Revert change that broke using libantlr4-runtime4.9 with C++17
+ Upstream commit 254b144b creeated a different ABI for C++17,
+ but it is not even possible to build antlr4-cpp-runtime for this ABI.
+ .
+ The proper fix would be upgrading to 4.9.2 where two commits
+ in March 2021 fixed this issue:
+  https://github.com/antlr/antlr4/commits/master/runtime/Cpp/runtime/src/ANTLRInputStream.h
+ .
+ The upstream fix changes ABI, do the simple fix instead that does
+ not offer a different ABI the library cannot even be built for.
+Author: Adrian Bunk <bunk@debian.org>
+
+--- antlr4-cpp-runtime-4.9+dfsg.orig/runtime/src/ANTLRInputStream.h
++++ antlr4-cpp-runtime-4.9+dfsg/runtime/src/ANTLRInputStream.h
+@@ -25,19 +25,11 @@ namespace antlr4 {
+     /// What is name or source of this char stream?
+     std::string name;
+ 
+-#if __cplusplus >= 201703L
+-    ANTLRInputStream(std::string_view input = "");
+-#else
+     ANTLRInputStream(const std::string &input = "");
+-#endif
+     ANTLRInputStream(const char data_[], size_t numberOfActualCharsInArray);
+     ANTLRInputStream(std::istream &stream);
+ 
+-#if __cplusplus >= 201703L
+-    virtual void load(std::string_view input);
+-#else
+     virtual void load(const std::string &input);
+-#endif
+     virtual void load(std::istream &stream);
+ 
+     /// Reset the stream so that it's in the same state it was

@@ -1,15 +1,43 @@
-Source: template-repository
-Section: unknown
+Source: antlr4-cpp-runtime
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Andrius Merkys <merkys@debian.org>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ libutfcpp-dev,
+ pkg-config,
+ uuid-dev,
+Standards-Version: 4.6.0
+Section: libs
+Homepage: https://www.antlr.org
+Vcs-Browser: https://salsa.debian.org/debian/antlr4-cpp-runtime
+Vcs-Git: https://salsa.debian.org/debian/antlr4-cpp-runtime.git
 
-Package: template-repository
+Package: libantlr4-runtime-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ libantlr4-runtime4.9 (= ${binary:Version}),
+ ${misc:Depends},
+Description: ANTLR Parser Generator - C++ runtime support (development files)
+ ANTLR (ANother Tool for Language Recognition) is a powerful parser generator
+ for reading, processing, executing, or translating structured text or binary
+ files. It's widely used to build languages, tools, and frameworks. From a
+ grammar, ANTLR generates a parser that can build and walk parse trees.
+ .
+ This package contains the development files of C++ runtime support for ANTLR.
+
+Package: libantlr4-runtime4.9
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: ANTLR Parser Generator - C++ runtime support (shared library)
+ ANTLR (ANother Tool for Language Recognition) is a powerful parser generator
+ for reading, processing, executing, or translating structured text or binary
+ files. It's widely used to build languages, tools, and frameworks. From a
+ grammar, ANTLR generates a parser that can build and walk parse trees.
+ .
+ This package contains the shared library of C++ runtime support for ANTLR.
